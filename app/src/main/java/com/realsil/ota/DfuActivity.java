@@ -218,7 +218,6 @@ public class DfuActivity extends Activity implements LoaderCallbacks<Cursor>, Sc
                         mFilePath = "/storage/emulated/0/Download/Release Version 7.0.7 20170906/APP_1.0.7-71d3b69f91f5202f9e42b50b1e570caa.bin";
                     }
                     final File file = new File(mFilePath);
-                    //file = new File("/storage/E867-15F2/003_aurora/170906_aurora_7.0.7/Release Version 7.0.7 20170906/APP_1.0.7-71d3b69f91f5202f9e42b50b1e570caa.bin");
                     mFileVersionView.setText(String.valueOf(newFwVersion));
                     mFileNameView.setText(file.getName());
                     mFileSizeView.setText(getString(R.string.dfu_file_size_text, file.length()));
@@ -329,27 +328,6 @@ public class DfuActivity extends Activity implements LoaderCallbacks<Cursor>, Sc
             }
         }
     };
-
-    /*
-    private Handler sHandle = new Handler();
-    private Runnable Scandevice = new Runnable() {
-        @Override
-        public void run() {
-            if(mDeviceName == null){
-                sHandle.postDelayed(Scandevice, 1000);
-            }
-            else if(mDeviceName == "AURORA-BLE-RCU"){
-                final File file = new File("/storage/E867-15F2/003_aurora/170906_aurora_7.0.7/Release Version 7.0.7 20170906/APP_1.0.7-71d3b69f91f5202f9e42b50b1e570caa.bin");
-                Log.d("device ----", "AURORA");
-            }
-            else if(mDeviceName == "ADVRF-RCUM"){
-                final File file = new File("/storage/E867-15F2/003_aurora/170906_aurora_7.0.7/Release Version 7.0.7 20170906/APP_1.0.7-71d3b69f91f5202f9e42b50b1e570caa.bin");
-                Log.d("device ----", "ADVRF");
-            }
-        }
-    };
-    */
-
     private BluetoothGattCallback mBluetoothGattCallback = new BluetoothGattCallback() {
 
         @Override
@@ -407,8 +385,6 @@ public class DfuActivity extends Activity implements LoaderCallbacks<Cursor>, Sc
                 Log.d("ldsdebug", "data = " + Arrays.toString(m_SoftwareRevision.getValue()));
                 ByteBuffer wrapped = ByteBuffer.wrap(nBuff);
                 wrapped.order(ByteOrder.LITTLE_ENDIAN);
-                //a = new String(Arrays.toString(m_SoftwareRevision.getValue()));
-                //b = a.charAt(9);
                 a = m_SoftwareRevision.getStringValue(0);
                 Log.d("jjydebug", a);
             }
